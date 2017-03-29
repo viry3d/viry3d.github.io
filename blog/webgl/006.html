@@ -1,0 +1,659 @@
+﻿<!DOCTYPE html><html lang="en"><head>
+<title>DJ's WebGL Tutorial 006</title>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="()">
+<style type="text/css">
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+a:hover,
+a:active {
+  outline: 0;
+}
+a {
+  color: #0088cc;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #005580;
+  text-decoration: underline;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+small {
+  font-size: 85%;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+cite {
+  font-style: normal;
+}
+
+
+h1.story_title {
+	margin: 1em 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.5em 0;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 40px;
+}
+
+h1 {
+  font-size: 38.5px;
+}
+
+h2 {
+  font-size: 31.5px;
+}
+
+h3 {
+  font-size: 24.5px;
+}
+
+h4 {
+  font-size: 17.5px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 11.9px;
+}
+
+ul,
+ol {
+  padding: 0;
+  margin: 0 0 10px 25px;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+
+
+dl {
+  margin-bottom: 20px;
+}
+
+dt,
+dd {
+  line-height: 20px;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 10px;
+}
+
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #ffffff;
+}
+
+abbr[title],
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted #999999;
+}
+
+
+blockquote {
+  padding: 0 0 0 15px;
+  margin: 0 0 20px;
+  border-left: 5px solid #dddddd;
+}
+
+blockquote p {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+}
+
+blockquote small {
+  display: block;
+  line-height: 20px;
+  color: #999999;
+}
+
+blockquote small:before {
+  content: '\2014 \00A0';
+}
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+
+address {
+  display: block;
+  margin-bottom: 20px;
+  font-style: normal;
+  line-height: 20px;
+}
+img {
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+	border: 0;
+}
+
+table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.tag.label{
+display: inline-block;
+vertical-align: baseline;
+line-height: 1;
+margin: 0em 0.125em;
+background-color: #e8e8e8;
+border-color: #e8e8e8;
+background-image: none;
+padding: 0.6em 0.8em;
+color: rgba(0, 0, 0, 0.6);
+text-transform: none;
+font-weight: bold;
+border-radius: 0.2857rem;
+box-sizing: border-box;
+font-size: 0.7428rem;
+}
+.tag.label.blue{
+background-color: #3b83c0 !important;
+border-color: #3b83c0 !important;
+color: #ffffff !important;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+
+.table th {
+  font-weight: bold;
+}
+
+.table thead th {
+  vertical-align: bottom;
+}
+
+.table caption + thead tr:first-child th,
+.table caption + thead tr:first-child td,
+.table colgroup + thead tr:first-child th,
+.table colgroup + thead tr:first-child td,
+.table thead:first-child tr:first-child th,
+.table thead:first-child tr:first-child td {
+  border-top: 0;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+
+.table .table {
+  background-color: #ffffff;
+}
+
+
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+  background-color: #f9f9f9;
+}
+.toc li {
+	list-style: none;
+}
+p {
+	line-height: 1.8em;
+}
+body>p {
+  margin-bottom: 1.8em;
+}
+body>p>img.center,
+body>p>a>img.center {
+  display: block;
+  margin: 0 auto;
+  background-color: rgba(128,128,128,0.3);
+}
+body {
+  font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", Heiti, "黑体", SimSun, "宋体", sans-serif;
+  font-size: 1.15em;
+  font-weight: 100;
+//  line-height: 1.8em;
+  color: #2f2f2f;
+}
+em.cjk_emphasis{
+	font-style: normal;
+	font-family: Georgia,"Times New Roman",Times,"楷体","AR PL UKai CN", "NSimSun","Songti SC","SimSun",serif!important;
+}
+body dt,
+body dd {
+  line-height: 1.35em;
+}
+body code {
+	background-color: #D6DBDF;
+	border: 0;
+  border-radius: 4px;
+  color: #2C3E50;
+  font-size: 90%;
+  padding: 2px 4px;
+}
+body h1 {
+  line-height: 1.6;
+}
+body h2 {
+  line-hieght: 1.1;
+}
+body h3 {
+  line-height: 1.1;
+}
+
+/**
+ * Treeview syntax highlighting based on highlight.js
+ * Copyright (c) 2014-2015, Asciidocfx Team, (MIT Licensed)
+ * https://github.com/asciidocfx/highlight-treeview.js
+ */
+.language-treeview.hljs{
+  position: relative;
+}
+.hljs-folder,
+.hljs-hiddenfile,
+.hljs-file {
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+    height: 16px;
+}
+.hljs-folder:before,
+.hljs-file:before,
+.hljs-hiddenfile:before {
+    top: 0;
+    content: '';
+    width: 14px;
+    height: 12px;
+    margin-top: 0px;
+    margin-right: 3px;
+    position: relative;
+    display: inline-block;
+    background-size: 14px;
+    background-repeat: no-repeat;
+}
+.hljs-file:before,
+.hljs-hiddenfile:before {
+    height: 14px;
+    margin-left: 1px;
+}
+.hljs-hiddenfile {
+    opacity: 0.6;
+}
+.hljs-file.photo:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogTTEyODAgMzIwdi0zMjBoLTEwMjR2MTkybDE5MiAxOTJsMTI4IC0xMjhsMzg0IDM4NHpNNDQ4IDUxMnEtODAgMCAtMTM2IDU2dC01NiAxMzZ0NTYgMTM2dDEzNiA1NnQxMzYgLTU2dDU2IC0xMzZ0LTU2IC0xMzZ0LTEzNiAtNTZ6IiAvPg0KCTwvZz4NCjwvc3ZnPg==')
+}
+.hljs-file.plain:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogTTM4NCA3MzZxMCAxNCA5IDIzdDIzIDloNzA0cTE0IDAgMjMgLTl0OSAtMjN2LTY0cTAgLTE0IC05IC0yM3QtMjMgLTloLTcwNHEtMTQgMCAtMjMgOXQtOSAyM3Y2NHpNMTEyMCA1MTJxMTQgMCAyMyAtOXQ5IC0yM3YtNjRxMCAtMTQgLTkgLTIzdC0yMyAtOWgtNzA0cS0xNCAwIC0yMyA5dC05IDIzdjY0cTAgMTQgOSAyM3QyMyA5aDcwNHpNMTEyMCAyNTZxMTQgMCAyMyAtOXQ5IC0yM3YtNjRxMCAtMTQgLTkgLTIzdC0yMyAtOWgtNzA0IHEtMTQgMCAtMjMgOXQtOSAyM3Y2NHEwIDE0IDkgMjN0MjMgOWg3MDR6IiAvPg0KCTwvZz4NCjwvc3ZnPg==')
+}
+.hljs-file.source:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogTTQ4MCA3NjhxOCAxMSAyMSAxMi41dDI0IC02LjVsNTEgLTM4cTExIC04IDEyLjUgLTIxdC02LjUgLTI0bC0xODIgLTI0M2wxODIgLTI0M3E4IC0xMSA2LjUgLTI0dC0xMi41IC0yMWwtNTEgLTM4cS0xMSAtOCAtMjQgLTYuNXQtMjEgMTIuNWwtMjI2IDMwMXEtMTQgMTkgMCAzOHpNMTI4MiA0NjdxMTQgLTE5IDAgLTM4bC0yMjYgLTMwMXEtOCAtMTEgLTIxIC0xMi41dC0yNCA2LjVsLTUxIDM4cS0xMSA4IC0xMi41IDIxdDYuNSAyNGwxODIgMjQzIGwtMTgyIDI0M3EtOCAxMSAtNi41IDI0dDEyLjUgMjFsNTEgMzhxMTEgOCAyNCA2LjV0MjEgLTEyLjV6TTY2MiA2cS0xMyAyIC0yMC41IDEzdC01LjUgMjRsMTM4IDgzMXEyIDEzIDEzIDIwLjV0MjQgNS41bDYzIC0xMHExMyAtMiAyMC41IC0xM3Q1LjUgLTI0bC0xMzggLTgzMXEtMiAtMTMgLTEzIC0yMC41dC0yNCAtNS41eiIgLz4NCgk8L2c+DQo8L3N2Zz4=')
+}
+.hljs-file.archive:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNNjQwIDExNTJ2MTI4aC0xMjh2LTEyOGgxMjh6TTc2OCAxMDI0djEyOGgtMTI4di0xMjhoMTI4ek02NDAgODk2djEyOGgtMTI4di0xMjhoMTI4ek03NjggNzY4djEyOGgtMTI4di0xMjhoMTI4ek0xNDY4IDExNTZxMjggLTI4IDQ4IC03NnQyMCAtODh2LTExNTJxMCAtNDAgLTI4IC02OHQtNjggLTI4aC0xMzQ0cS00MCAwIC02OCAyOHQtMjggNjh2MTYwMHEwIDQwIDI4IDY4dDY4IDI4aDg5NnE0MCAwIDg4IC0yMHQ3NiAtNDh6TTEwMjQgMTQwMCB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC0xMjh2LTEyOGgtMTI4djEyOGgtNTEydi0xNTM2aDEyODB6TTc4MSA1OTNsMTA3IC0zNDlxOCAtMjcgOCAtNTJxMCAtODMgLTcyLjUgLTEzNy41dC0xODMuNSAtNTQuNXQtMTgzLjUgNTQuNXQtNzIuNSAxMzcuNXEwIDI1IDggNTJxMjEgNjMgMTIwIDM5NnYxMjhoMTI4di0xMjhoNzkgcTIyIDAgMzkgLTEzdDIzIC0zNHpNNjQwIDEyOHE1MyAwIDkwLjUgMTl0MzcuNSA0NXQtMzcuNSA0NXQtOTAuNSAxOXQtOTAuNSAtMTl0LTM3LjUgLTQ1dDM3LjUgLTQ1dDkwLjUgLTE5eiIgLz4NCgk8L2c+DQo8L3N2Zz4=')
+}
+.hljs-file.audio:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogTTYyMCA2ODZxMjAgLTggMjAgLTMwdi01NDRxMCAtMjIgLTIwIC0zMHEtOCAtMiAtMTIgLTJxLTEyIDAgLTIzIDlsLTE2NiAxNjdoLTEzMXEtMTQgMCAtMjMgOXQtOSAyM3YxOTJxMCAxNCA5IDIzdDIzIDloMTMxbDE2NiAxNjdxMTYgMTUgMzUgN3pNMTAzNyAtM3EzMSAwIDUwIDI0cTEyOSAxNTkgMTI5IDM2M3QtMTI5IDM2M3EtMTYgMjEgLTQzIDI0dC00NyAtMTRxLTIxIC0xNyAtMjMuNSAtNDMuNXQxNC41IC00Ny41IHExMDAgLTEyMyAxMDAgLTI4MnQtMTAwIC0yODJxLTE3IC0yMSAtMTQuNSAtNDcuNXQyMy41IC00Mi41cTE4IC0xNSA0MCAtMTV6TTgyNiAxNDVxMjcgMCA0NyAyMHE4NyA5MyA4NyAyMTl0LTg3IDIxOXEtMTggMTkgLTQ1IDIwdC00NiAtMTd0LTIwIC00NC41dDE4IC00Ni41cTUyIC01NyA1MiAtMTMxdC01MiAtMTMxcS0xOSAtMjAgLTE4IC00Ni41dDIwIC00NC41cTIwIC0xNyA0NCAtMTd6IiAvPg0KCTwvZz4NCjwvc3ZnPg==')
+}
+.hljs-file.video:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogTTc2OCA3NjhxNTIgMCA5MCAtMzh0MzggLTkwdi0zODRxMCAtNTIgLTM4IC05MHQtOTAgLTM4aC0zODRxLTUyIDAgLTkwIDM4dC0zOCA5MHYzODRxMCA1MiAzOCA5MHQ5MCAzOGgzODR6TTEyNjAgNzY2cTIwIC04IDIwIC0zMHYtNTc2cTAgLTIyIC0yMCAtMzBxLTggLTIgLTEyIC0ycS0xNCAwIC0yMyA5bC0yNjUgMjY2djkwbDI2NSAyNjZxOSA5IDIzIDlxNCAwIDEyIC0yeiIgLz4NCgk8L2c+DQo8L3N2Zz4=')
+}
+.hljs-file.pdf:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogTTg5NCA0NjVxMzMgLTI2IDg0IC01NnE1OSA3IDExNyA3cTE0NyAwIDE3NyAtNDlxMTYgLTIyIDIgLTUycTAgLTEgLTEgLTJsLTIgLTJ2LTFxLTYgLTM4IC03MSAtMzhxLTQ4IDAgLTExNSAyMHQtMTMwIDUzcS0yMjEgLTI0IC0zOTIgLTgzcS0xNTMgLTI2MiAtMjQyIC0yNjJxLTE1IDAgLTI4IDdsLTI0IDEycS0xIDEgLTYgNXEtMTAgMTAgLTYgMzZxOSA0MCA1NiA5MS41dDEzMiA5Ni41cTE0IDkgMjMgLTZxMiAtMiAyIC00cTUyIDg1IDEwNyAxOTcgcTY4IDEzNiAxMDQgMjYycS0yNCA4MiAtMzAuNSAxNTkuNXQ2LjUgMTI3LjVxMTEgNDAgNDIgNDBoMjFoMXEyMyAwIDM1IC0xNXExOCAtMjEgOSAtNjhxLTIgLTYgLTQgLThxMSAtMyAxIC04di0zMHEtMiAtMTIzIC0xNCAtMTkycTU1IC0xNjQgMTQ2IC0yMzh6TTMxOCA1NHE1MiAyNCAxMzcgMTU4cS01MSAtNDAgLTg3LjUgLTg0dC00OS41IC03NHpNNzE2IDk3NHEtMTUgLTQyIC0yIC0xMzJxMSA3IDcgNDRxMCAzIDcgNDNxMSA0IDQgOCBxLTEgMSAtMSAydC0wLjUgMS41dC0wLjUgMS41cS0xIDIyIC0xMyAzNnEwIC0xIC0xIC0ydi0yek01OTIgMzEzcTEzNSA1NCAyODQgODFxLTIgMSAtMTMgOS41dC0xNiAxMy41cS03NiA2NyAtMTI3IDE3NnEtMjcgLTg2IC04MyAtMTk3cS0zMCAtNTYgLTQ1IC04M3pNMTIzOCAzMjlxLTI0IDI0IC0xNDAgMjRxNzYgLTI4IDEyNCAtMjhxMTQgMCAxOCAxcTAgMSAtMiAzeiIgLz4NCgk8L2c+DQo8L3N2Zz4=')
+}
+.hljs-file.xls:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogTTQyOSAxMDZ2LTEwNmgyODF2MTA2aC03NWwxMDMgMTYxcTUgNyAxMCAxNi41dDcuNSAxMy41dDMuNSA0aDJxMSAtNCA1IC0xMHEyIC00IDQuNSAtNy41dDYgLTh0Ni41IC04LjVsMTA3IC0xNjFoLTc2di0xMDZoMjkxdjEwNmgtNjhsLTE5MiAyNzNsMTk1IDI4Mmg2N3YxMDdoLTI3OXYtMTA3aDc0bC0xMDMgLTE1OXEtNCAtNyAtMTAgLTE2LjV0LTkgLTEzLjVsLTIgLTNoLTJxLTEgNCAtNSAxMHEtNiAxMSAtMTcgMjNsLTEwNiAxNTloNzZ2MTA3IGgtMjkwdi0xMDdoNjhsMTg5IC0yNzJsLTE5NCAtMjgzaC02OHoiIC8+DQoJPC9nPg0KPC9zdmc+')
+}
+.hljs-file.doc:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogTTIzMyA3Njh2LTEwN2g3MGwxNjQgLTY2MWgxNTlsMTI4IDQ4NXE3IDIwIDEwIDQ2cTIgMTYgMiAyNGg0bDMgLTI0cTEgLTMgMy41IC0yMHQ1LjUgLTI2bDEyOCAtNDg1aDE1OWwxNjQgNjYxaDcwdjEwN2gtMzAwdi0xMDdoOTBsLTk5IC00MzhxLTUgLTIwIC03IC00NmwtMiAtMjFoLTRsLTMgMjFxLTEgNSAtNCAyMXQtNSAyNWwtMTQ0IDU0NWgtMTE0bC0xNDQgLTU0NXEtMiAtOSAtNC41IC0yNC41dC0zLjUgLTIxLjVsLTQgLTIxaC00bC0yIDIxIHEtMiAyNiAtNyA0NmwtOTkgNDM4aDkwdjEwN2gtMzAweiIgLz4NCgk8L2c+DQo8L3N2Zz4=')
+}
+.hljs-file.ppt:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogTTQxNiAxMDZ2LTEwNmgzMjd2MTA2aC05M3YxNjdoMTM3cTc2IDAgMTE4IDE1cTY3IDIzIDEwNi41IDg3dDM5LjUgMTQ2cTAgODEgLTM3IDE0MXQtMTAwIDg3cS00OCAxOSAtMTMwIDE5aC0zNjh2LTEwN2g5MnYtNTU1aC05MnpNNzY5IDM4NmgtMTE5djI2OGgxMjBxNTIgMCA4MyAtMThxNTYgLTMzIDU2IC0xMTVxMCAtODkgLTYyIC0xMjBxLTMxIC0xNSAtNzggLTE1eiIgLz4NCgk8L2c+DQo8L3N2Zz4=')
+}
+.hljs-folder:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTUzNiAyMjR2NzA0cTAgNDAgLTI4IDY4dC02OCAyOGgtNzA0cS00MCAwIC02OCAyOHQtMjggNjh2NjRxMCA0MCAtMjggNjh0LTY4IDI4aC0zMjBxLTQwIDAgLTY4IC0yOHQtMjggLTY4di05NjBxMCAtNDAgMjggLTY4dDY4IC0yOGgxMjE2cTQwIDAgNjggMjh0MjggNjh6TTE2NjQgOTI4di03MDRxMCAtOTIgLTY2IC0xNTh0LTE1OCAtNjZoLTEyMTZxLTkyIDAgLTE1OCA2NnQtNjYgMTU4djk2MHEwIDkyIDY2IDE1OHQxNTggNjZoMzIwIHE5MiAwIDE1OCAtNjZ0NjYgLTE1OHYtMzJoNjcycTkyIDAgMTU4IC02NnQ2NiAtMTU4eiIgLz4NCgk8L2c+DQo8L3N2Zz4=')
+}
+.hljs-hiddenfile:before {
+    background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg0KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIiA+DQo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgaGVpZ2h0PSIxNzkuMiIgd2lkdGg9IjE3OS4yIj4NCgk8Zz4NCgkJPHBhdGggdHJhbnNmb3JtPSJzY2FsZSgwLjEsLTAuMSkgdHJhbnNsYXRlKDAsLTE1MzYpIiBkPSJNMTQ2OCAxMTU2cTI4IC0yOCA0OCAtNzZ0MjAgLTg4di0xMTUycTAgLTQwIC0yOCAtNjh0LTY4IC0yOGgtMTM0NHEtNDAgMCAtNjggMjh0LTI4IDY4djE2MDBxMCA0MCAyOCA2OHQ2OCAyOGg4OTZxNDAgMCA4OCAtMjB0NzYgLTQ4ek0xMDI0IDE0MDB2LTM3NmgzNzZxLTEwIDI5IC0yMiA0MWwtMzEzIDMxM3EtMTIgMTIgLTQxIDIyek0xNDA4IC0xMjh2MTAyNGgtNDE2cS00MCAwIC02OCAyOHQtMjggNjh2NDE2aC03Njh2LTE1MzZoMTI4MHogIiAvPg0KCTwvZz4NCjwvc3ZnPg==')
+}
+.hljs-tvline {
+    margin-left: 6px;
+    position: absolute;
+    text-indent: -99em;
+    padding-bottom: 8px;
+    vertical-align: top;
+    display: inline-block;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: rgb(94, 144, 117);
+}
+.hljs-folder-branch {
+    width: 8px;
+    height: 8px;
+    margin-top: -1px;
+    margin-left: 6px;
+    text-indent: -99em;
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(94, 144, 117);
+}
+.hljs-folder-branch.win {
+    width: 14px;
+    margin-right: 2px;
+}
+.hljs-folder-last-branch {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    text-indent: -99em;
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(94, 144, 117);
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: rgb(94, 144, 117);
+}
+.hljs-folder-last-branch.win {
+    width: 13px;
+    margin-right: 2px;
+}
+
+
+/**
+ * Treeview syntax highlighting based on highlight.js
+ */
+
+
+.mark{
+	border: 0;
+  background-color: #ddf3e7;
+  border-radius: 4px;
+  color: #29754d;
+  font-size: 90%;
+  padding: 2px 4px;
+}
+.line_mark{
+	border: 1px dashed #3A4C42;
+}
+code .mark{
+	border-radius: 0px;
+	font-size: initial;
+	padding: initial;
+}
+a.attachment{
+	border: 1px solid #3b83c0;
+	display: inline-block;
+	padding: 5px;
+	margin: 2px;
+}
+.checkbox .checked{
+	text-decoration: line-through;
+}
+.flow-chart, .sequence-diagram{
+	text-align: center;
+}
+.plot, .plot-image{
+	text-align: center;
+	min-height: 200px;
+	min-width: 200px;
+}
+
+pre {
+	line-height: initial !important;
+	word-wrap: break-word;
+	word-break: break-word;
+}
+
+.story_align_left {
+	text-align: left;
+}
+.story_align_right {
+	text-align: right;
+}
+.story_align_center {
+	text-align: center;
+}
+.story_align_justify {
+	text-align: justify;
+}
+
+
+/** 
+ * code line nums
+ */
+code.hljs.code_linenums{
+	position: relative;
+}
+ol.ol_linenums{
+	padding: 0px;
+	margin-left: 30px;
+	border-left: 1px solid #e0e0e0;
+}
+li.li_linenum{
+	line-height: 20px;
+	margin-left: 10px;
+	list-style: none;
+	counter-increment: lines 1;
+}
+li.li_linenum:before{
+	content: counter(lines, decimal);
+  position: absolute;
+  left: 0px;
+  text-align: center;
+  width: 2.5em;
+	opacity: 0.5;
+  vertical-align: top;
+}
+/** 
+ * code line nums
+ */
+
+/*
+    Paraíso (light)
+    Created by Jan T. Sott (http://github.com/idleberg)
+    Inspired by the art of Rubens LP (http://www.rubenslp.com.br)
+*/
+
+/* Paraíso Comment */
+.hljs-comment,
+.hljs-title {
+  color: #776e71;
+}
+
+/* Paraíso Red */
+.hljs-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.hljs-name,
+.ruby .hljs-constant,
+.xml .hljs-tag .hljs-title,
+.xml .hljs-pi,
+.xml .hljs-doctype,
+.html .hljs-doctype,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo {
+  color: #ef6155;
+}
+
+/* Paraíso Orange */
+.hljs-number,
+.hljs-preprocessor,
+.hljs-built_in,
+.hljs-literal,
+.hljs-params,
+.hljs-constant {
+  color: #f99b15;
+}
+
+/* Paraíso Yellow */
+.ruby .hljs-class .hljs-title,
+.css .hljs-rule .hljs-attribute {
+  color: #fec418;
+}
+
+/* Paraíso Green */
+.hljs-string,
+.hljs-value,
+.hljs-inheritance,
+.hljs-header,
+.ruby .hljs-symbol,
+.xml .hljs-cdata {
+  color: #48b685;
+}
+
+/* Paraíso Aqua */
+.css .hljs-hexcolor {
+  color: #5bc4bf;
+}
+
+/* Paraíso Blue */
+.hljs-function,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-function .hljs-title,
+.ruby .hljs-title .hljs-keyword,
+.perl .hljs-sub,
+.javascript .hljs-title,
+.coffeescript .hljs-title {
+  color: #06b6ef;
+}
+
+/* Paraíso Purple */
+.hljs-keyword,
+.javascript .hljs-function {
+  color: #815ba4;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: #e7e9db;
+  color: #4f424c;
+  padding: 0.5em;
+  -webkit-text-size-adjust: none;
+}
+
+.coffeescript .javascript,
+.javascript .xml,
+.tex .hljs-formula,
+.xml .javascript,
+.xml .vbscript,
+.xml .css,
+.xml .hljs-cdata {
+  opacity: 0.5;
+}
+
+
+
+</style>
+</head><body style="width:980px;margin: 10px auto;">
+<div style="padding: 15px;border:1px solid #ddd;"><div class="preview" id="wmd-preview">
+
+	<div class="preview"><h1 class="story_title">DJ's WebGL Tutorial 006--模型加载、显示</h1><div class="story_tags"><div class="tag blue label">WebGL</div></div><hr>
+<p>本节将加载并显示一个3D模型，<br>
+从渲染方法上讲，和上一节的立方体没有本质区别，只是顶点数据不一样。<br>
+立方体是我们自己定义顶点数据，<br>
+而3D模型，是从资源文件读取顶点数据，<br>
+所以这一节的重点在于数据读取。</p>
+<hr>
+<h2 id="e4bb8ee68c87e5ae9aurle58aa0e8bdbde69687e4bbb6e4ba8ce8bf9be588b6e695b0e68dae">从指定url加载文件二进制数据</h2>
+<pre><code class="language-javascript hljs code_linenums"><ol class="ol_linenums" style="counter-reset: lines 0;"><li class="li_linenum " date-linenum="1">DataLoader.LoadAsync = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(url, callback, obj)</span> </span>{&nbsp;</li><li class="li_linenum " date-linenum="2">    <span class="hljs-keyword">var</span> req = <span class="hljs-keyword">new</span> XMLHttpRequest();&nbsp;</li><li class="li_linenum " date-linenum="3">    req.open(<span class="hljs-string">"GET"</span>, url, <span class="hljs-literal">true</span>);&nbsp;</li><li class="li_linenum " date-linenum="4">    req.responseType = <span class="hljs-string">'arraybuffer'</span>;&nbsp;</li><li class="li_linenum " date-linenum="5">    req.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{&nbsp;</li><li class="li_linenum " date-linenum="6">        <span class="hljs-keyword">if</span>(req.readyState == <span class="hljs-number">4</span>) {&nbsp;</li><li class="li_linenum " date-linenum="7">            <span class="hljs-keyword">if</span>(req.status == <span class="hljs-number">200</span> || req.status == <span class="hljs-number">0</span>) {&nbsp;</li><li class="li_linenum " date-linenum="8">                callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">DataView</span>(req.response), obj);&nbsp;</li><li class="li_linenum " date-linenum="9">            } <span class="hljs-keyword">else</span> {&nbsp;</li><li class="li_linenum " date-linenum="10">                alert(<span class="hljs-string">'Could not load '</span> + url + <span class="hljs-string">' ('</span> + req.status + <span class="hljs-string">')'</span>);&nbsp;</li><li class="li_linenum " date-linenum="11">            }&nbsp;</li><li class="li_linenum " date-linenum="12">        }&nbsp;</li><li class="li_linenum " date-linenum="13">    };&nbsp;</li><li class="li_linenum " date-linenum="14">&nbsp;</li><li class="li_linenum " date-linenum="15">    req.send(<span class="hljs-literal">null</span>);&nbsp;</li><li class="li_linenum " date-linenum="16">};&nbsp;</li></ol></code></pre>
+<hr>
+<h2 id="e58aa0e8bdbdmeshe69687e4bbb6">加载mesh文件</h2>
+<pre><code class="language-javascript hljs code_linenums"><ol class="ol_linenums" style="counter-reset: lines 0;"><li class="li_linenum " date-linenum="1">Mesh.Load = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(url, onload)</span> </span>{&nbsp;</li><li class="li_linenum " date-linenum="2">    <span class="hljs-keyword">var</span> m = <span class="hljs-keyword">new</span> Mesh();&nbsp;</li><li class="li_linenum " date-linenum="3">    m.onload = onload;&nbsp;</li><li class="li_linenum " date-linenum="4">&nbsp;</li><li class="li_linenum " date-linenum="5">    DataLoader.LoadAsync(url, on_mesh_data_load, m);&nbsp;</li><li class="li_linenum " date-linenum="6">&nbsp;</li><li class="li_linenum " date-linenum="7">    <span class="hljs-keyword">return</span> m;&nbsp;</li><li class="li_linenum " date-linenum="8">};&nbsp;</li></ol></code></pre>
+<hr>
+<h2 id="e8afbbe58f96meshe695b0e68dae">读取mesh数据</h2>
+<pre><code class="language-javascript hljs code_linenums"><ol class="ol_linenums" style="counter-reset: lines 0;"><li class="li_linenum " date-linenum="1"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">on_mesh_data_load</span><span class="hljs-params">(data, mesh)</span> </span>{&nbsp;</li><li class="li_linenum " date-linenum="2">    <span class="hljs-keyword">var</span> offset = [<span class="hljs-number">0</span>];&nbsp;</li><li class="li_linenum " date-linenum="3">    read_string(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="4">&nbsp;</li><li class="li_linenum " date-linenum="5">    <span class="hljs-keyword">var</span> mesh_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="6">&nbsp;</li><li class="li_linenum " date-linenum="7">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;mesh_count; i++) {&nbsp;</li><li class="li_linenum " date-linenum="8">        <span class="hljs-keyword">var</span> name = read_string(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="9">        <span class="hljs-keyword">var</span> position = read_vector3(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="10">        <span class="hljs-keyword">var</span> rotation = read_quaternion(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="11">        <span class="hljs-keyword">var</span> scale = read_vector3(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="12">&nbsp;</li><li class="li_linenum " date-linenum="13">        <span class="hljs-keyword">var</span> vertex_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="14">        <span class="hljs-keyword">var</span> vertices = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(vertex_count * <span class="hljs-number">3</span>);&nbsp;</li><li class="li_linenum " date-linenum="15">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>; j&lt;vertex_count; j++) {&nbsp;</li><li class="li_linenum " date-linenum="16">            <span class="hljs-keyword">var</span> v = read_vector3(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="17">            vertices.set(v, j*<span class="hljs-number">3</span>);&nbsp;</li><li class="li_linenum " date-linenum="18">        }&nbsp;</li><li class="li_linenum " date-linenum="19">        mesh.vertices = vertices;&nbsp;</li><li class="li_linenum " date-linenum="20">&nbsp;</li><li class="li_linenum " date-linenum="21">        <span class="hljs-keyword">var</span> color_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="22">        <span class="hljs-keyword">var</span> colors = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(color_count * <span class="hljs-number">4</span>);&nbsp;</li><li class="li_linenum " date-linenum="23">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>; j&lt;color_count; j++) {&nbsp;</li><li class="li_linenum " date-linenum="24">            <span class="hljs-comment">//read color</span>&nbsp;</li><li class="li_linenum " date-linenum="25">            <span class="hljs-keyword">var</span> v = read_quaternion(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="26">            colors.set(v, j*<span class="hljs-number">4</span>);&nbsp;</li><li class="li_linenum " date-linenum="27">        }&nbsp;</li><li class="li_linenum " date-linenum="28">&nbsp;</li><li class="li_linenum " date-linenum="29">        <span class="hljs-keyword">var</span> uv_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="30">        <span class="hljs-keyword">var</span> uvs = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(uv_count * <span class="hljs-number">2</span>);&nbsp;</li><li class="li_linenum " date-linenum="31">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>; j&lt;uv_count; j++) {&nbsp;</li><li class="li_linenum " date-linenum="32">            <span class="hljs-keyword">var</span> x = DataLoader.ReadFloat32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="33">            <span class="hljs-keyword">var</span> y = <span class="hljs-number">1</span> - DataLoader.ReadFloat32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="34">            uvs.set([x, y], j*<span class="hljs-number">2</span>);&nbsp;</li><li class="li_linenum " date-linenum="35">        }&nbsp;</li><li class="li_linenum " date-linenum="36">        mesh.uv = uvs;&nbsp;</li><li class="li_linenum " date-linenum="37">&nbsp;</li><li class="li_linenum " date-linenum="38">        <span class="hljs-keyword">var</span> uv2_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="39">        <span class="hljs-keyword">var</span> uv2s = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(uv2_count * <span class="hljs-number">2</span>);&nbsp;</li><li class="li_linenum " date-linenum="40">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>; j&lt;uv2_count; j++) {&nbsp;</li><li class="li_linenum " date-linenum="41">            <span class="hljs-keyword">var</span> x = DataLoader.ReadFloat32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="42">            <span class="hljs-keyword">var</span> y = <span class="hljs-number">1</span> - DataLoader.ReadFloat32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="43">            uv2s.set([x, y], j*<span class="hljs-number">2</span>);&nbsp;</li><li class="li_linenum " date-linenum="44">        }&nbsp;</li><li class="li_linenum " date-linenum="45">&nbsp;</li><li class="li_linenum " date-linenum="46">        <span class="hljs-keyword">var</span> normal_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="47">        <span class="hljs-keyword">var</span> normals = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(normal_count * <span class="hljs-number">3</span>);&nbsp;</li><li class="li_linenum " date-linenum="48">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>; j&lt;normal_count; j++) {&nbsp;</li><li class="li_linenum " date-linenum="49">            <span class="hljs-keyword">var</span> v = read_vector3(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="50">            normals.set(v, j*<span class="hljs-number">3</span>);&nbsp;</li><li class="li_linenum " date-linenum="51">        }&nbsp;</li><li class="li_linenum " date-linenum="52">&nbsp;</li><li class="li_linenum " date-linenum="53">        <span class="hljs-keyword">var</span> tangent_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="54">        <span class="hljs-keyword">var</span> tangents = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(tangent_count * <span class="hljs-number">4</span>);&nbsp;</li><li class="li_linenum " date-linenum="55">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>; j&lt;tangent_count; j++) {&nbsp;</li><li class="li_linenum " date-linenum="56">            <span class="hljs-comment">//read vector4</span>&nbsp;</li><li class="li_linenum " date-linenum="57">            <span class="hljs-keyword">var</span> v = read_quaternion(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="58">            tangents.set(v, j*<span class="hljs-number">4</span>);&nbsp;</li><li class="li_linenum " date-linenum="59">        }&nbsp;</li><li class="li_linenum " date-linenum="60">&nbsp;</li><li class="li_linenum " date-linenum="61">        <span class="hljs-keyword">var</span> index_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="62">        <span class="hljs-keyword">var</span> indices = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint16Array</span>(index_count);&nbsp;</li><li class="li_linenum " date-linenum="63">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>; j&lt;index_count; j++) {&nbsp;</li><li class="li_linenum " date-linenum="64">            <span class="hljs-keyword">var</span> v = DataLoader.ReadUint16(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="65">            indices[j] = v;&nbsp;</li><li class="li_linenum " date-linenum="66">        }&nbsp;</li><li class="li_linenum " date-linenum="67">        mesh.indices = indices;&nbsp;</li><li class="li_linenum " date-linenum="68">&nbsp;</li><li class="li_linenum " date-linenum="69">        <span class="hljs-keyword">var</span> submeshs = [];&nbsp;</li><li class="li_linenum " date-linenum="70">        <span class="hljs-keyword">var</span> submesh_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="71">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j=<span class="hljs-number">0</span>; j&lt;submesh_count; j++) {&nbsp;</li><li class="li_linenum " date-linenum="72">            <span class="hljs-keyword">var</span> sub_count = DataLoader.ReadInt32(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="73">            <span class="hljs-keyword">var</span> sub_indices = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint16Array</span>(index_count);&nbsp;</li><li class="li_linenum " date-linenum="74">            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> k=<span class="hljs-number">0</span>; k&lt;sub_count; k++) {&nbsp;</li><li class="li_linenum " date-linenum="75">                <span class="hljs-keyword">var</span> v = DataLoader.ReadUint16(data, offset);&nbsp;</li><li class="li_linenum " date-linenum="76">                sub_indices[k] = v;&nbsp;</li><li class="li_linenum " date-linenum="77">            }&nbsp;</li><li class="li_linenum " date-linenum="78">&nbsp;</li><li class="li_linenum " date-linenum="79">            submeshs[j] = sub_indices;&nbsp;</li><li class="li_linenum " date-linenum="80">        }&nbsp;</li><li class="li_linenum " date-linenum="81">&nbsp;</li><li class="li_linenum " date-linenum="82">        <span class="hljs-keyword">break</span>;&nbsp;</li><li class="li_linenum " date-linenum="83">    }&nbsp;</li><li class="li_linenum " date-linenum="84">&nbsp;</li><li class="li_linenum " date-linenum="85">    mesh.loaded = <span class="hljs-literal">true</span>;&nbsp;</li><li class="li_linenum " date-linenum="86">&nbsp;</li><li class="li_linenum " date-linenum="87">    mesh.onload(mesh);&nbsp;</li><li class="li_linenum " date-linenum="88">};&nbsp;</li></ol></code></pre>
+<hr>
+<h2 id="e5889be5bbbae9a1b6e782b9buffer">创建顶点buffer</h2>
+<pre><code class="language-javascript hljs code_linenums"><ol class="ol_linenums" style="counter-reset: lines 0;"><li class="li_linenum " date-linenum="1"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">create_buffer</span><span class="hljs-params">()</span> </span>{&nbsp;</li><li class="li_linenum " date-linenum="2">    mesh = Mesh.Load(<span class="hljs-string">"ranger.mesh"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(m)</span> </span>{&nbsp;</li><li class="li_linenum " date-linenum="3">        vertex_buffer = gl.createBuffer();&nbsp;</li><li class="li_linenum " date-linenum="4">        gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);&nbsp;</li><li class="li_linenum " date-linenum="5">        gl.bufferData(gl.ARRAY_BUFFER, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(m.vertices), gl.STATIC_DRAW);&nbsp;</li><li class="li_linenum " date-linenum="6">&nbsp;</li><li class="li_linenum " date-linenum="7">        uv_buffer = gl.createBuffer();&nbsp;</li><li class="li_linenum " date-linenum="8">        gl.bindBuffer(gl.ARRAY_BUFFER, uv_buffer);&nbsp;</li><li class="li_linenum " date-linenum="9">        gl.bufferData(gl.ARRAY_BUFFER, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Float32Array</span>(m.uv), gl.STATIC_DRAW);&nbsp;</li><li class="li_linenum " date-linenum="10">&nbsp;</li><li class="li_linenum " date-linenum="11">        index_buffer = gl.createBuffer();&nbsp;</li><li class="li_linenum " date-linenum="12">        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, index_buffer);&nbsp;</li><li class="li_linenum " date-linenum="13">        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint16Array</span>(m.indices), gl.STATIC_DRAW);&nbsp;</li><li class="li_linenum " date-linenum="14">    });&nbsp;</li><li class="li_linenum " date-linenum="15">}&nbsp;</li></ol></code></pre>
+<hr>
+<p>初始化：</p>
+<pre><code class="language-javascript hljs code_linenums"><ol class="ol_linenums" style="counter-reset: lines 0;"><li class="li_linenum " date-linenum="1"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init_gl</span><span class="hljs-params">()</span> </span>{&nbsp;</li><li class="li_linenum " date-linenum="2">    gl.clearColor(<span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>);&nbsp;</li><li class="li_linenum " date-linenum="3">    gl.enable(gl.DEPTH_TEST);&nbsp;</li><li class="li_linenum " date-linenum="4">    gl.enable(gl.CULL_FACE);&nbsp;</li><li class="li_linenum " date-linenum="5">    gl.frontFace(gl.CW);&nbsp;</li><li class="li_linenum " date-linenum="6">&nbsp;</li><li class="li_linenum " date-linenum="7">    create_shader();&nbsp;</li><li class="li_linenum " date-linenum="8">    create_buffer();&nbsp;</li><li class="li_linenum " date-linenum="9">    create_texture();&nbsp;</li><li class="li_linenum " date-linenum="10">}&nbsp;</li></ol></code></pre>
+<p>这里新加了<code>gl.frontFace(gl.CW)</code>修改三角形正面的顶点顺序为CW顺时针。<br>
+因为mesh数据是我从Unity3D导出的，Unity3D引擎使用的顶点顺序是CW，<br>
+而gl默认是使用CCW逆时针。</p>
+<hr>
+<p>渲染的时候，调整一下模型的位置和角度，其它的和上一节立方体渲染完全一样：</p>
+<pre><code class="hljs prolog code_linenums"><ol class="ol_linenums" style="counter-reset: lines 0;"><li class="li_linenum " date-linenum="1"><span class="hljs-atom">var</span> <span class="hljs-atom">mat_m</span> = <span class="hljs-name">Matrix4x4</span>.<span class="hljs-name">TRS</span>([<span class="hljs-number">0</span>, -<span class="hljs-number">1.1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-atom">rot</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]);&nbsp;</li></ol></code></pre>
+<hr>
+<p>运行结果：<br>
+<img src="http://img.blog.csdn.net/20150603153953524" />
+<hr>
+<p><a href="http://pan.baidu.com/s/1qWr6UJU" target="_blank">代码下载</a></p>
+</div>
+
+</div></div>
+
+<div style="margin: 10px 0px 10px;padding: 15px;border: 1px solid #DDD;">
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+</div>
+</body></html>
+

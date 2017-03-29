@@ -1,0 +1,466 @@
+﻿<!DOCTYPE html>
+<html class="js" lang="en-US">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Viry3D Game Engine</title>
+    <link rel="stylesheet" id="divi-fonts-css" href="viry3d_files/css.css" type="text/css" media="all">
+    <link rel="stylesheet" id="divi-style-css" href="viry3d_files/style.css" type="text/css" media="all">
+    <link rel="stylesheet" id="et-shortcodes-css-css" href="viry3d_files/shortcodes.css" type="text/css" media="all">
+    <link rel="stylesheet" id="et-shortcodes-responsive-css-css" href="viry3d_files/shortcodes_responsive.css" type="text/css" media="all">
+    <link rel="stylesheet" id="magnific-popup-css" href="viry3d_files/magnific_popup.css" type="text/css" media="all">
+    <script type="text/javascript" src="viry3d_files/jquery_003.js"></script>
+    <script type="text/javascript" src="viry3d_files/jquery-migrate.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style id="theme-customizer-css">
+        #footer {
+            height: 100px;
+        }
+
+        .overflow {
+            overflow: hidden;
+        }
+
+        .mt50 {
+            margin-top: 50px;
+        }
+
+        .mb50 {
+            margin-bottom: 50px;
+        }
+
+        .footer, .footer a {
+            color: #999;
+        }
+
+        .footer {
+            padding-bottom: 20px;
+            background: #333;
+            font: 13px Arial,"SimSun";
+            text-align: center;
+        }
+
+        .mt20 {
+            margin-top: 20px;
+        }
+
+        .lineH24 {
+            line-height: 24px;
+        }
+
+        .woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-message, .woocommerce-error, .woocommerce-info {
+            background: #81d742 !important;
+        }
+
+        #et_search_icon:hover, .mobile_menu_bar:before, .mobile_menu_bar:after, .et_toggle_slide_menu:after, .et-social-icon a:hover, .et_pb_sum, .et_pb_pricing li a, .et_pb_pricing_table_button, .et_overlay:before, .entry-summary p.price ins, .woocommerce div.product span.price, .woocommerce-page div.product span.price, .woocommerce #content div.product span.price, .woocommerce-page #content div.product span.price, .woocommerce div.product p.price, .woocommerce-page div.product p.price, .woocommerce #content div.product p.price, .woocommerce-page #content div.product p.price, .et_pb_member_social_links a:hover, .woocommerce .star-rating span:before, .woocommerce-page .star-rating span:before, .et_pb_widget li a:hover, .et_pb_filterable_portfolio .et_pb_portfolio_filters li a.active, .et_pb_filterable_portfolio .et_pb_portofolio_pagination ul li a.active, .et_pb_gallery .et_pb_gallery_pagination ul li a.active, .wp-pagenavi span.current, .wp-pagenavi a:hover, .nav-single a, .posted_in a {
+            color: #81d742;
+        }
+
+        .et_pb_contact_submit, .et_password_protected_form .et_submit_button, .et_pb_bg_layout_light .et_pb_newsletter_button, .comment-reply-link, .form-submit input, .et_pb_bg_layout_light .et_pb_promo_button, .et_pb_bg_layout_light .et_pb_more_button, .woocommerce a.button.alt, .woocommerce-page a.button.alt, .woocommerce button.button.alt, .woocommerce-page button.button.alt, .woocommerce input.button.alt, .woocommerce-page input.button.alt, .woocommerce #respond input#submit.alt, .woocommerce-page #respond input#submit.alt, .woocommerce #content input.button.alt, .woocommerce-page #content input.button.alt, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button {
+            color: #81d742;
+        }
+
+        .footer-widget h4 {
+            color: #81d742;
+        }
+
+        .et-search-form, .nav li ul, .et_mobile_menu, .footer-widget li:before, .et_pb_pricing li:before, blockquote {
+            border-color: #81d742;
+        }
+
+        .et_pb_counter_amount, .et_pb_featured_table .et_pb_pricing_heading, .et_quote_content, .et_link_content, .et_audio_content, .et_pb_post_slider.et_pb_bg_layout_dark, .et_slide_in_menu_container {
+            background-color: #81d742;
+        }
+
+        a {
+            color: #70d644;
+        }
+
+        #top-header, #et-secondary-nav li ul {
+            background-color: #81d742;
+        }
+
+        #main-header .nav li ul a {
+            color: rgba(0,0,0,0.7);
+        }
+
+        #main-footer .footer-widget h4 {
+            color: #81d742;
+        }
+
+        .footer-widget li:before {
+            border-color: #81d742;
+        }
+
+        .bottom-nav, .bottom-nav a, .bottom-nav li.current-menu-item a {
+            color: #aaa;
+        }
+
+        #et-footer-nav .bottom-nav li.current-menu-item a {
+            color: #aaa;
+        }
+
+        h1, h2, h3, h4, h5, h6, .et_quote_content blockquote p, .et_pb_slide_description .et_pb_slide_title {
+            font-weight: bold;
+            font-style: normal;
+            text-transform: none;
+            text-decoration: none;
+        }
+
+        @media only screen and ( min-width: 981px ) {
+            #logo {
+                max-height: 68%;
+            }
+
+            .et_pb_svg_logo #logo {
+                height: 68%;
+            }
+
+            .et-fixed-header#top-header, .et-fixed-header#top-header #et-secondary-nav li ul {
+                background-color: #81d742;
+            }
+
+            .et-fixed-header #top-menu li.current-menu-ancestor > a,
+            .et-fixed-header #top-menu li.current-menu-item > a {
+                color: #81d742 !important;
+            }
+        }
+
+        @media only screen and ( min-width: 1350px) {
+            .et_pb_row {
+                padding: 27px 0;
+            }
+
+            .et_pb_section {
+                padding: 54px 0;
+            }
+
+            .single.et_pb_pagebuilder_layout.et_full_width_page .et_post_meta_wrapper {
+                padding-top: 81px;
+            }
+
+            .et_pb_section.et_pb_section_first {
+                padding-top: inherit;
+            }
+
+            .et_pb_fullwidth_section {
+                padding: 0;
+            }
+        }
+
+        @media only screen and ( max-width: 980px ) {
+        }
+
+        @media only screen and ( max-width: 767px ) {
+        }
+    </style>
+    <style id="module-customizer-css"></style>
+    <style type="text/css" id="et-custom-css">
+        ul.sub-menu li a {
+            font-size: 12px;
+        }
+
+        ul.menu-footer-menu li a {
+            color: #bbb !important;
+        }
+    </style>
+    <style id="fit-vids-style">
+        .fluid-width-video-wrapper {
+            width: 100%;
+            position: relative;
+            padding: 0;
+        }
+
+            .fluid-width-video-wrapper iframe, .fluid-width-video-wrapper object, .fluid-width-video-wrapper embed {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+    </style>
+</head>
+<body class="home page page-id-2625 page-template-default et_color_scheme_green et_pb_button_helper_class et_fixed_nav et_show_nav et_pb_gutter osx et_pb_gutters3 et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_pb_footer_columns4 et_header_style_left et_pb_pagebuilder_layout et_right_sidebar safari">
+    <div class="et-animated-content" style="padding-top: 0px; margin-top: -1px;" id="page-container">
+        <div id="et-main-area">
+            <div id="main-content">
+                <article id="post-2625" class="post-2625 page type-page status-publish hentry">
+                    <div class="entry-content">
+
+                        <div class="et_pb_section et_pb_fullwidth_section  et_pb_section_0 et_section_regular">
+                            <div class="et_pb_module et_pb_slider  et_pb_fullwidth_slider_0 et_pb_bg_layout_dark">
+                                <div class="et_pb_slides">
+                                    <div class="et_pb_slide et_pb_slide_with_image et_pb_bg_layout_dark et_pb_media_alignment_center et_pb_slide_0 et-pb-active-slide" style="background-color:#8d1bf4;background-image:url(viry3d_files/bg.jpg);">
+                                        <div style="min-height: 591px;" class="et_pb_container clearfix">
+                                            <div style="margin-top: -127px;" class="et_pb_slide_image"><img class="active" style="max-height: 472px;" src="viry3d_files/logo.png" alt=""></div><div class="et_pb_slide_description">
+                                                <h2 class="et_pb_slide_title">
+                                                    Viry3D
+                                                </h2>
+                                                <div class="et_pb_slide_content">
+                                                    <p>
+                                                        C++ cross platform 3D game engine. <br />
+                                                        Based on Direct3D 11 for Universal Windows Platform, <br />
+                                                        and OpenGL ES 2.0/3.0 for Android and iOS. <br />
+                                                        With Unity3D like API programming style.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="et_pb_section et_pb_section_1 et_pb_with_background et_section_regular">
+                            <div class="et_pb_row et_pb_row_2">
+                                <div class="et_pb_column et_pb_column_4_4  et_pb_column_4">
+                                    <div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_0">
+                                        <p style="font-size:50px;font-weight:bold;color:black;" align="center">FEATURES</p>
+                                    </div>
+
+                                    <div>
+                                        <div class="entry-content">
+                                            <p><strong>Programming language</strong></p>
+                                            <ul>
+                                                <li>C++ 11 for engine core</li>
+                                            </ul>
+                                            <p><strong>Platform &amp; 3D API support</strong></p>
+                                            <ul>
+                                                <li>Direct3D 11, OpenGL ES (2.0, 3.0) support</li>
+                                                <li>Universal Windows Platform, Mac OS X, Android, iOS support</li>
+                                            </ul>
+                                            <p><strong>Material / Shader support</strong></p>
+                                            <ul>
+                                                <li>Supports vertex and fragment shaders, both HLSL and GLSL written in one shader file</li>
+                                                <li>Multiple pass effects</li>
+                                                <li>Load textures from png, jpeg</li>
+                                            </ul>
+                                            <p><strong>Mesh</strong></p>
+                                            <ul>
+                                                <li>Export meshes with Unity3D</li>
+                                                <li>Static geometry batching</li>
+                                            </ul>
+                                            <p><strong>Animation</strong></p>
+                                            <ul>
+                                                <li>Export animations with Unity3D</li>
+                                                <li>Skinned mesh support<ul><li>blending of multiple animations with variable weights</li><li>variable/multiple bone weight skinning</li><li>hardware-accelerated skinning</li></ul></li>
+                                                <li>Bezier curves based AnimationCurve</li>
+                                            </ul>
+                                            <p><strong>Scene Features</strong></p>
+                                            <ul>
+                                                <li>GameObject-Component programming model</li>
+                                                <li>Transform based hierarchical scene graph, nodes allow objects to be attached to each other and follow each others movements, articulated structures etc</li>
+                                            </ul>
+                                            <p><strong>Special Effects</strong></p>
+                                            <ul>
+                                                <li>HDR rendering pipeline support</li>
+                                                <li>Deferred shading pipeline support</li>
+                                                <li>Directional, spot, point lights</li>
+                                                <li>Shadow mapping, support CSM</li>
+                                                <li>Lightmap support</li>
+                                                <li>Flexible camera component</li>
+                                                <li>ImageEffect system, allowing for full-screen postprocessing effects to be combined easily</li>
+                                                <li>Bloom, Global Fog, Highlighting effect</li>
+                                                <li>Particle Systems, automatic use of particle pooling for maximum performance</li>
+                                                <li>Support for Skybox</li>
+                                                <li>Transparent objects automatically managed</li>
+                                                <li>Terrain rendering</li>
+                                            </ul>
+                                            <p><strong>Physics</strong></p>
+                                            <ul>
+                                                <li>Based on Bullet Physics Engine</li>
+                                                <li>BoxCollider</li>
+                                                <li>MeshCollider</li>
+                                                <li>TerrainCollider</li>
+                                            </ul>
+                                            <p><strong>UI Features</strong></p>
+                                            <ul>
+                                                <li>Sprite renderer for drawing image</li>
+                                                <li>Text renderer for drawing label using font</li>
+                                            </ul>
+                                            <p><strong>Audio</strong></p>
+                                            <ul>
+                                                <li>OpenAL based audio engine for all platforms</li>
+                                                <li>Support for wav, mp3 (streaming decode)</li>
+                                            </ul>
+                                            <p><strong>Input</strong></p>
+                                            <ul>
+                                                <li>Mouse and Touches</li>
+                                            </ul>
+                                            <p><strong>Misc features</strong></p>
+                                            <ul>
+                                                <li>File IO</li>
+                                                <li>UTF8, UTF32 string encoding</li>
+                                                <li>Mathf library</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="et_pb_section  et_pb_section_2 et_section_regular">
+                            <div class="et_pb_row et_pb_row_0">
+                                <div class="et_pb_column et_pb_column_1_2  et_pb_column_0">
+                                    <div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_justified  et_pb_blurb_0 et_pb_blurb_position_top">
+                                        <div class="et_pb_blurb_content">
+                                            <div class="et_pb_main_blurb_image">
+                                                <img src="viry3d_files/icon0.png">
+                                            </div>
+                                            <div class="et_pb_blurb_container">
+                                                <h4>Cross Platform Support</h4>
+                                                <p>Viry3D supports Universal Windows Platform, Mac OS X, Android, iOS.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><div class="et_pb_column et_pb_column_1_2  et_pb_column_1">
+                                    <div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_justified  et_pb_blurb_1 et_pb_blurb_position_top">
+                                        <div class="et_pb_blurb_content">
+                                            <div class="et_pb_main_blurb_image">
+                                                <img src="viry3d_files/icon1.png">
+                                            </div>
+                                            <div class="et_pb_blurb_container">
+                                                <h4>Open Source</h4>
+                                                <p>
+                                                    I will open source all the code when the time comes.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="et_pb_row et_pb_row_1">
+                                <div class="et_pb_column et_pb_column_1_2  et_pb_column_2">
+                                    <div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_justified  et_pb_blurb_2 et_pb_blurb_position_top">
+                                        <div class="et_pb_blurb_content">
+                                            <div class="et_pb_main_blurb_image">
+                                                <img src="viry3d_files/icon2.png">
+                                            </div>
+                                            <div class="et_pb_blurb_container">
+                                                <h4>Documentation</h4>
+                                                <p>
+                                                    In preparation.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><div class="et_pb_column et_pb_column_1_2  et_pb_column_3">
+                                    <div class="et_pb_blurb et_pb_module et_pb_bg_layout_light et_pb_text_align_justified  et_pb_blurb_3 et_pb_blurb_position_top">
+                                        <div class="et_pb_blurb_content">
+                                            <div class="et_pb_main_blurb_image">
+                                                <img src="viry3d_files/icon3.png">
+                                            </div>
+                                            <div class="et_pb_blurb_container">
+                                                <h4>Contact</h4>
+                                                <p>
+                                                    If you are interested in this engine, please contact me!<br />
+                                                    Email：47324322@qq.com <br />
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="et_pb_section  et_pb_section_3 et_pb_with_background et_section_regular">
+                            <div class="et_pb_row et_pb_row_2">
+                                <div class="et_pb_column et_pb_column_4_4  et_pb_column_4">
+                                    <div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_0">
+                                        <p style="font-size:50px;font-weight:bold;color:black;" align="center">SHOWCASE</p>
+                                        <p style="font-size:20px;" align="center">What can we do with this engine?</p>
+                                    </div>
+
+                                    <div class="et_pb_portfolio_grid clearfix et_pb_module et_pb_bg_layout_light  et_pb_portfolio_0" style="margin-top:100px;">
+
+
+                                        <div class="et_pb_grid_item post-2877 project type-project status-publish has-post-thumbnail hentry">
+                                            <h3 style="margin-bottom:20px;">Merged!</h3>
+                                            <img src="viry3d_files/case_01.png" width="400" height="284">
+                                            <div class="et_pb_blurb_container" style="float:right;width:575px;height:300px">
+                                                A simple game, completely free, no iap, no ads. <br />
+                                                Place three or more squares together, will merged into a bigger one. <br />
+                                                Come on and get a higher score! <br />
+                                                <br />
+                                                Available on Windows App Store.
+                                                <a href="https://www.microsoft.com/store/apps/9NBLGGH4PRR2" target="_blank">See Details.</a>
+                                            </div>
+                                            <p class="post-meta"></p>
+                                        </div>
+
+                                        <div class="et_pb_grid_item post-2877 project type-project status-publish has-post-thumbnail hentry">
+                                            <h3 style="margin-bottom:20px;">Plant Clicker</h3>
+                                            <img src="viry3d_files/case_02.png" width="400" height="284">
+                                            <div class="et_pb_blurb_container" style="float:right;width:575px;height:300px">
+                                                Build your own garden and look at new plants, shrubs and trees grow together. <br />
+                                                Just planting and harvesting. <br />
+                                            </div>
+                                            <p class="post-meta"></p>
+                                        </div>
+
+
+                                    </div><div class="pagination clearfix"><div class="alignleft"></div><div class="alignright"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+</article>
+            </div><span style="display: inline;" class="et_pb_scroll_top et-pb-icon et-hidden"></span>
+        </div>
+    </div>
+
+    <div id="footer" class="footer overflow">
+        <p class="mt20 lineH24" style="padding-bottom:0px">
+            ViryTech.
+        </p>
+
+        <p class="lineH24">
+            Copyright © 2014-2016 viry3d.com, All rights reserved by v.Britannia
+        </p>
+    </div>
+
+    <style type="text/css" id="et-builder-advanced-style">
+        .et_pb_section_2 {
+            background-color: #ffffff;
+        }
+
+        .et_pb_section_3 {
+            background-color: #eeeeee;
+        }
+
+        .et_pb_fullwidth_post_slider_0.et_pb_post_slider {
+            background-color: #dbdbdb;
+        }
+
+        .et_pb_section_1 {
+            background-color: #eeeeee;
+        }
+
+        .et_pb_slide_0.et_pb_slider_with_text_overlay .et_pb_slide_content {
+            -webkit-border-bottom-right-radius: 3px;
+            -webkit-border-bottom-left-radius: 3px;
+            -moz-border-radius-bottomright: 3px;
+            -moz-border-radius-bottomleft: 3px;
+            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .et_pb_slide_0.et_pb_slider_with_text_overlay h2.et_pb_slide_title {
+            -webkit-border-top-left-radius: 3px;
+            -webkit-border-top-right-radius: 3px;
+            -moz-border-radius-topleft: 3px;
+            -moz-border-radius-topright: 3px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+        }
+    </style>
+    <script type="text/javascript" src="viry3d_files/frontend-builder-global-functions.js"></script>
+    <script type="text/javascript" src="viry3d_files/jquery_004.js"></script>
+    <script type="text/javascript" src="viry3d_files/custom.js"></script>
+    <script type="text/javascript" src="viry3d_files/smoothscroll.js"></script>
+    <script type="text/javascript" src="viry3d_files/jquery.js"></script>
+    <script type="text/javascript" src="viry3d_files/waypoints.js"></script>
+    <script type="text/javascript" src="viry3d_files/jquery_002.js"></script>
+    <script type="text/javascript" src="viry3d_files/frontend-builder-scripts.js"></script>
+    <script type="text/javascript" src="viry3d_files/wp-embed.js"></script>
+</body>
+</html>
