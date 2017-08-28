@@ -16,7 +16,7 @@
                    <string>software-package</string>
                     <!-- required.the URL of the file to download.-->
                    <key>url</key>
-                   <string>https://viry3d.github.io/ipa.ipa</string>
+                   <string>http://www.viry3d.com/ipa.ipa</string>
                </dict>
                <!-- display-image: the icon to display during download .-->
                <dict>
@@ -26,7 +26,7 @@
                    <key>needs-shine</key>
                    <true/>
                    <key>url</key>
-                   <string>https://viry3d.github.io/ipa_icon.png</string>
+                   <string>http://www.viry3d.com/ipa_icon.png</string>
                </dict>
            </array><key>metadata</key>
            <dict>
