@@ -1,4 +1,0 @@
-D:\Project\stack_open_source_library\trunk\viry3d\app\project\web\bin\web.dll
-D:\Project\stack_open_source_library\trunk\viry3d\app\project\web\bin\web.pdb
-D:\Project\stack_open_source_library\trunk\viry3d\app\project\web\obj\Release\web.dll
-D:\Project\stack_open_source_library\trunk\viry3d\app\project\web\obj\Release\web.pdb
