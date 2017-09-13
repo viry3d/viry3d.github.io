@@ -1,0 +1,60 @@
+<Shader name="SkinnedMesh/Diffuse" queue="Geometry">
+	<VertexShader name="vs">
+		<Uniform name="_World" size="64"/>
+		<Uniform name="_ViewProjection" size="64"/>
+		<Uniform name="_Bones" size="3840"/>
+
+		<VertexAttribute type="Vertex" name="a_pos"/>
+		<VertexAttribute type="Texcoord" name="a_uv"/>
+		<VertexAttribute type="BlendWeight" name="a_blend_weight"/>
+		<VertexAttribute type="BlendIndices" name="a_blend_indices"/>
+
+		<Include name="Base.glsl"/>
+		<Include name="SkinnedMesh.glsl"/>
+		<Source>
+uniform mat4 _World;
+uniform mat4 _ViewProjection;
+uniform vec4 _Bones[BONE_VEC_MAX];
+
+attribute vec4 a_pos;
+attribute vec2 a_uv;
+attribute vec4 a_blend_weight;
+attribute vec4 a_blend_indices;
+
+varying vec2 v_uv;
+
+void main() {
+    vec4 skinned_pos_world;
+    skinned_mesh(skinned_pos_world, a_pos, a_blend_weight, a_blend_indices, _Bones);
+    gl_Position = skinned_pos_world * _ViewProjection;
+    v_uv = a_uv;
+}
+		</Source>
+	</VertexShader>
+
+	<PixelShader name="ps">
+		<Sampler name="_MainTex" type="2D"/>
+		<Uniform name="_Color" size="16"/>
+
+		<Source>
+precision mediump float;
+
+uniform sampler2D _MainTex;
+uniform vec4 _Color;
+
+varying vec2 v_uv;
+
+void main() {
+    gl_FragColor = texture2D(_MainTex, v_uv) * _Color;
+}
+		</Source>
+	</PixelShader>
+
+	<RenderState name="rs">
+	</RenderState>
+
+	<Pass name="pass"
+		  vs="vs"
+		  ps="ps"
+		  rs="rs"/>
+</Shader>

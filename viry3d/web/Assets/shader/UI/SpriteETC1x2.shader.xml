@@ -1,0 +1,65 @@
+<Shader name="UI/SpriteETC1x2" queue="Transparent">
+	<VertexShader name="vs">
+		<Uniform name="_World" size="64"/>
+		<Uniform name="_ViewProjection" size="64"/>
+		
+		<VertexAttribute type="Vertex" name="a_pos"/>
+		<VertexAttribute type="Texcoord" name="a_uv"/>
+		<VertexAttribute type="Color" name="a_color"/>
+		
+		<Include name="Base.glsl"/>
+		<Source>
+uniform mat4 _World;
+uniform mat4 _ViewProjection;
+
+attribute vec4 a_pos;
+attribute vec2 a_uv;
+attribute vec4 a_color;
+
+varying vec2 v_uv;
+varying vec2 v_uv_a;
+varying vec4 v_color;
+
+void main() {
+    gl_Position = a_pos * _World * _ViewProjection;
+    v_uv = a_uv;
+	v_uv.y *= 0.5;
+	v_uv_a = v_uv;
+	v_uv_a.y += 0.5;
+	v_color = a_color;
+}
+		</Source>
+	</VertexShader>
+
+	<PixelShader name="ps">
+		<Sampler name="_MainTex" type="2D"/>
+
+		<Source>
+precision mediump float;
+
+uniform sampler2D _MainTex;
+
+varying vec2 v_uv;
+varying vec2 v_uv_a;
+varying vec4 v_color;
+
+void main() {
+    gl_FragColor.rgb = texture2D(_MainTex, v_uv).rgb * v_color.rgb;
+	gl_FragColor.a = texture2D(_MainTex, v_uv_a).r * v_color.a;
+}
+		</Source>
+	</PixelShader>
+
+	<RenderState name="rs">
+		<Cull value="Off"/>
+		<ZTest value="Always"/>
+		<ZWrite value="Off"/>
+		<Blend src="SrcAlpha"
+			   dst="OneMinusSrcAlpha"/>
+	</RenderState>
+
+	<Pass name="pass"
+		  vs="vs"
+		  ps="ps"
+		  rs="rs"/>
+</Shader>

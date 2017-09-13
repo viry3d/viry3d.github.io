@@ -1,0 +1,53 @@
+<Shader name="Diffuse" queue="Geometry">
+	<VertexShader name="vs">
+		<Uniform name="_World" size="64"/>
+		<Uniform name="_ViewProjection" size="64"/>
+		<Uniform name="_MainTex_ST" size="16"/>
+
+		<VertexAttribute type="Vertex" name="a_pos"/>
+		<VertexAttribute type="Texcoord" name="a_uv"/>
+
+		<Include name="Base.glsl"/>
+		<Source>
+uniform mat4 _World;
+uniform mat4 _ViewProjection;
+uniform vec4 _MainTex_ST;
+
+attribute vec4 a_pos;
+attribute vec2 a_uv;
+
+varying vec2 v_uv;
+
+void main() {
+    gl_Position = a_pos * _World * _ViewProjection;
+    v_uv = a_uv * _MainTex_ST.xy + _MainTex_ST.zw;
+}
+		</Source>
+	</VertexShader>
+
+	<PixelShader name="ps">
+		<Sampler name="_MainTex" type="2D"/>
+		<Uniform name="_Color" size="16"/>
+
+		<Source>
+precision mediump float;
+
+uniform sampler2D _MainTex;
+uniform vec4 _Color;
+
+varying vec2 v_uv;
+
+void main() {
+    gl_FragColor = texture2D(_MainTex, v_uv) * _Color;
+}
+		</Source>
+	</PixelShader>
+
+	<RenderState name="rs">
+	</RenderState>
+
+	<Pass name="pass"
+		  vs="vs"
+		  ps="ps"
+		  rs="rs"/>
+</Shader>

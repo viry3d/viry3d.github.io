@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{C3B5B121-B0C8-4BB1-AF1F-3547E53C1DE6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.css" />
+    <Content Include="index.html" />
+    <Content Include="require_main.js" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="AppAnim.ts" />
+    <TypeScriptCompile Include="AppClear.ts" />
+    <TypeScriptCompile Include="AppJavaScript.ts" />
+    <TypeScriptCompile Include="AppMesh.ts" />
+    <TypeScriptCompile Include="AppSocket.ts" />
+    <TypeScriptCompile Include="AppWatch.ts" />
+    <TypeScriptCompile Include="lib\animation\Animation.ts" />
+    <TypeScriptCompile Include="lib\animation\AnimationClip.ts" />
+    <TypeScriptCompile Include="lib\animation\AnimationState.ts" />
+    <TypeScriptCompile Include="lib\Application.ts" />
+    <TypeScriptCompile Include="lib\audio\AudioListener.ts" />
+    <TypeScriptCompile Include="lib\audio\AudioSource.ts" />
+    <TypeScriptCompile Include="lib\Component.ts" />
+    <TypeScriptCompile Include="lib\container\List.ts" />
+    <TypeScriptCompile Include="lib\container\Map.ts" />
+    <TypeScriptCompile Include="lib\container\Vector.ts" />
+    <TypeScriptCompile Include="lib\GameObject.ts" />
+    <TypeScriptCompile Include="lib\graphics\BufferGL.ts" />
+    <TypeScriptCompile Include="lib\graphics\Camera.ts" />
+    <TypeScriptCompile Include="lib\graphics\Color.ts" />
+    <TypeScriptCompile Include="lib\graphics\Display.ts" />
+    <TypeScriptCompile Include="lib\graphics\FrameBuffer.ts" />
+    <TypeScriptCompile Include="lib\graphics\Graphics.ts" />
+    <TypeScriptCompile Include="lib\graphics\IndexBuffer.ts" />
+    <TypeScriptCompile Include="lib\graphics\Material.ts" />
+    <TypeScriptCompile Include="lib\graphics\Mesh.ts" />
+    <TypeScriptCompile Include="lib\graphics\RenderPass.ts" />
+    <TypeScriptCompile Include="lib\graphics\RenderTexture.ts" />
+    <TypeScriptCompile Include="lib\graphics\Shader.ts" />
+    <TypeScriptCompile Include="lib\graphics\Texture.ts" />
+    <TypeScriptCompile Include="lib\graphics\Texture2D.ts" />
+    <TypeScriptCompile Include="lib\graphics\VertexBuffer.ts" />
+    <TypeScriptCompile Include="lib\graphics\XMLShader.ts" />
+    <TypeScriptCompile Include="lib\Input.ts" />
+    <TypeScriptCompile Include="lib\io\File.ts" />
+    <TypeScriptCompile Include="lib\io\MemoryStream.ts" />
+    <TypeScriptCompile Include="lib\Layer.ts" />
+    <TypeScriptCompile Include="lib\math\Mathf.ts" />
+    <TypeScriptCompile Include="lib\math\Matrix4x4.ts" />
+    <TypeScriptCompile Include="lib\math\Quaternion.ts" />
+    <TypeScriptCompile Include="lib\math\Rect.ts" />
+    <TypeScriptCompile Include="lib\math\Vector2.ts" />
+    <TypeScriptCompile Include="lib\math\Vector3.ts" />
+    <TypeScriptCompile Include="lib\math\Vector4.ts" />
+    <TypeScriptCompile Include="lib\Object.ts" />
+    <TypeScriptCompile Include="lib\postprocess\ImageEffect.ts" />
+    <TypeScriptCompile Include="lib\renderer\MeshRenderer.ts" />
+    <TypeScriptCompile Include="lib\renderer\Renderer.ts" />
+    <TypeScriptCompile Include="lib\renderer\SkinnedMeshRenderer.ts" />
+    <TypeScriptCompile Include="lib\Resource.ts" />
+    <TypeScriptCompile Include="lib\string\String.ts" />
+    <TypeScriptCompile Include="lib\time\Time.ts" />
+    <TypeScriptCompile Include="lib\time\Timer.ts" />
+    <TypeScriptCompile Include="lib\Transform.ts" />
+    <TypeScriptCompile Include="lib\tweener\Tweener.ts" />
+    <TypeScriptCompile Include="lib\tweener\TweenPosition.ts" />
+    <TypeScriptCompile Include="lib\tweener\TweenUIColor.ts" />
+    <TypeScriptCompile Include="lib\ui\Atlas.ts" />
+    <TypeScriptCompile Include="lib\ui\Sprite.ts" />
+    <TypeScriptCompile Include="lib\ui\UIEventHandler.ts" />
+    <TypeScriptCompile Include="lib\ui\UILabel.ts" />
+    <TypeScriptCompile Include="lib\ui\UICanvasRenderer.ts" />
+    <TypeScriptCompile Include="lib\ui\UIRect.ts" />
+    <TypeScriptCompile Include="lib\ui\UISprite.ts" />
+    <TypeScriptCompile Include="lib\ui\UIView.ts" />
+    <TypeScriptCompile Include="lib\Viry3D.ts" />
+    <TypeScriptCompile Include="lib\World.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>web</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54729</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54729/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>True</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>
