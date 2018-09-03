@@ -8,7 +8,7 @@
 
     <div id="container">
 
-        <div id="header" style="color:white;background-color:rgb(51, 51, 51);">
+        <div id="header" style="color:white;background-color:rgb(50, 50, 50);">
             <div style="height:44px;">
             </div>
 
@@ -21,8 +21,7 @@
                     <h1 style="font-weight:400;margin:0;">Viry3D</h1>
                     <p style="font-size:large;">
                         C++跨平台3D游戏引擎。<br />
-                        支持Windows、Android、iOS、macOS。<br />
-                        使用Unity3D类似的编程API。<br />
+                        支持Windows、Android、iOS、macOS和Web。<br />
                     </p>
                     <p style="float:right;text-align:right;">
                         Stack<br />
@@ -36,7 +35,7 @@
             </div>
         </div>
 
-        <div id="feature" style="background-color:rgb(246, 246, 246);padding:44px;">
+        <div id="feature" style="background-color:rgb(240, 240, 240);padding:44px;">
             <h1 style="font-weight:400;margin-top:0;text-align:center;">引擎功能</h1>
 
             <div style="margin:auto;max-width:1000px;">
@@ -46,19 +45,13 @@
                 </ul>
                 <p><strong>平台 &amp; 3D API支持</strong></p>
                 <ul>
-                    <li>Vulkan, OpenGL ES 3.0</li>
-                    <li>Windows, Android, iOS, macOS</li>
-                </ul>
-                <p><strong>材质和Shader</strong></p>
-                <ul>
-                    <li>支持Vertex和Fragment shader，使用GLSL编写，以XML的格式组织结构</li>
-                    <li>在Shader中编写多Pass效果</li>
-                    <li>使用png, jpeg作为纹理文件存储格式</li>
+                    <li>Vulkan, OpenGL ES 2.0/3.0</li>
+                    <li>Windows, Android, iOS, macOS, Web(基于WebAssembly)</li>
                 </ul>
                 <p><strong>Mesh</strong></p>
                 <ul>
                     <li>使用Unity3D导出场景和网格数据</li>
-                    <li>静态批次合并</li>
+                    <li>包含材质和纹理导出</li>
                 </ul>
                 <p><strong>动画</strong></p>
                 <ul>
@@ -73,43 +66,25 @@
                     </li>
                     <li>基于贝塞尔曲线的的AnimationCurve</li>
                 </ul>
-                <p><strong>场景</strong></p>
-                <ul>
-                    <li>GameObject-Component编程模型</li>
-                    <li>基于Transform的树形结构</li>
-                    <li>摄像机视口裁剪</li>
-                </ul>
                 <p><strong>效果</strong></p>
                 <ul>
-                    <li>HDR渲染管线</li>
-                    <li>延迟着色管线</li>
-                    <li>Directional, spot, point光源</li>
-                    <li>Shadow mapping，支持CSM</li>
-                    <li>Lightmap</li>
-                    <li>Camera组件</li>
-                    <li>ImageEffect系统，便捷的组织全屏后处理</li>
-                    <li>Bloom, Global Fog, Highlighting效果</li>
-                    <li>粒子系统</li>
+                    <li>Camera</li>
+                    <li>Mesh Renderer</li>
+                    <li>SkinnedMesh Renderer</li>
+                    <li>Light</li>
                     <li>Skybox</li>
-                    <li>Terrain渲染</li>
-                </ul>
-                <p><strong>物理</strong></p>
-                <ul>
-                    <li>集成Bullet Physics引擎</li>
-                    <li>BoxCollider</li>
-                    <li>MeshCollider</li>
-                    <li>TerrainCollider</li>
+                    <li>Render To Texture</li>
+                    <li>FXAA</li>
+                    <li>PostEffect Blur</li>
+                    <li>Shadow Map</li>
                 </ul>
                 <p><strong>UI</strong></p>
                 <ul>
-                    <li>UISprite绘制图片</li>
-                    <li>UILabel绘制文本</li>
-                    <li>批次自动合并</li>
-                </ul>
-                <p><strong>音频</strong></p>
-                <ul>
-                    <li>集成OpenAL，全平台使用统一接口</li>
-                    <li>支持wav，mp3（流式解码）格式</li>
+                    <li>Canvas Renderer</li>
+                    <li>Sprite</li>
+                    <li>Label</li>
+                    <li>Freetype Font</li>
+                    <li>Button</li>
                 </ul>
                 <p><strong>输入</strong></p>
                 <ul>
@@ -127,7 +102,19 @@
             </div>
         </div>
 
-        <div id="showcase" style="background-color:rgb(255, 255, 255);padding-top:44px;padding-bottom:44px;">
+        <div id="livedemo" style="color:white;background-color:rgb(50, 50, 50);padding:44px;">
+            <h1 style="font-weight:400;margin-top:0;text-align:center;">在线Demo</h1>
+
+            <table align="center">
+                <tr>
+                    <td>
+                        <iframe width="1280" height="720" scrolling="no" style="background-color:black; border: none;" src="viry3d/wasm/index.html"></iframe>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="showcase" style="background-color:rgb(240, 240, 240);padding-top:44px;padding-bottom:44px;">
             <h1 style="font-weight:400;margin-top:0;text-align:center;">游戏案例</h1>
 
             <div class="case" style="margin-bottom:44px;">
@@ -162,7 +149,7 @@
 
                     <div style="float:left;width:444px;height:50px;margin-left:44px;margin-top:65px;">
                         <p style="margin:0;">
-                            模仿像素鸟，使用WebGL版引擎制作。<br />
+                            模仿像素鸟，使用旧版WebGL引擎制作。<br />
                             <a href="http://www.viry3d.com/viry3d/web/index.html?AppJavaScript" target="_blank">WebGL版在线玩</a>。<br />
                         </p>
                     </div>
@@ -174,7 +161,7 @@
             
         </div>
 
-        <div id="footer" style="padding:20px;background-color:rgb(68, 68, 68);color:white;text-align:center;font-size:small;clear:both;">
+        <div id="footer" style="padding:20px;background-color:rgb(50, 50, 50);color:white;text-align:center;font-size:small;clear:both;">
             <p style="margin:0;">ViryTech.</p>
             <p style="margin:0;">由Stack保留所有权利</p>
         </div>
