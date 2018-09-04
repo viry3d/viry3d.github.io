@@ -105,6 +105,16 @@ function Main() {
     gl = Module.ctx;
 
     const is_mobile = IsMobilePlatform();
+    const has_touch = !!(('ontouchstart' in window) || (window.DocumentTouch && document instanceof DocumentTouch));
+
+    console.log(navigator.userAgent);
+    if (is_mobile) {
+        console.log("Running on mobile platform");
+    } else {
+        console.log("Running on desktop platform");
+    }
+    console.log("Has touch " + has_touch);
+
     if (is_mobile || document.body.clientWidth < 1280) {
         canvas.width = document.body.clientWidth;
         canvas.height = canvas.width * 720 / 1280;
@@ -113,29 +123,14 @@ function Main() {
         canvas.height = 720;
     }
 
-    if (is_mobile) {
-        canvas.ontouchstart = function (e) {
-            OnMouseDown(e);
-        };
-        canvas.ontouchmove = function (e) {
-            OnMouseMove(e);
-        };
-        canvas.ontouchend = function (e) {
-            OnMouseUp(e);
-        };
-        canvas.ontouchcancel = function (e) {
-            OnMouseUp(e);
-        };
+    if (has_touch) {
+        canvas.addEventListener("touchstart", OnMouseDown, false);
+        canvas.addEventListener("touchmove", OnMouseMove, false);
+        canvas.addEventListener("touchend", OnMouseUp, false);
     } else {
-        canvas.onmousedown = function (e) {
-            OnMouseDown(e);
-        };
-        canvas.onmousemove = function (e) {
-            OnMouseMove(e);
-        };
-        canvas.onmouseup = function (e) {
-            OnMouseUp(e);
-        };
+        canvas.addEventListener("mousedown", OnMouseDown, false);
+        canvas.addEventListener("mousemove", OnMouseMove, false);
+        canvas.addEventListener("mouseup", OnMouseUp, false);
     }
 
     const canvas_width = canvas.width;
