@@ -105,13 +105,29 @@
         <div id="livedemo" style="color:white;background-color:rgb(50, 50, 50);padding:44px;">
             <h1 style="font-weight:400;margin-top:0;text-align:center;">在线Demo</h1>
 
-            <table align="center">
+            <table align="center" style="border-spacing:0;">
                 <tr>
-                    <td>
-                        <iframe width="1280" height="720" scrolling="no" style="background-color:black; border: none;" src="viry3d/wasm/index.html"></iframe>
+                    <td style="padding:0;">
+                        <iframe id="demoframe" scrolling="no" style="background-color:black;border:none;"></iframe>
                     </td>
                 </tr>
             </table>
+
+            <script type="text/javascript">
+                const demoframe = document.getElementById("demoframe");
+                if (document.body.clientWidth < 1280)
+                {
+                    demoframe.width = document.body.clientWidth;
+                    demoframe.height = demoframe.width * 720 / 1280;
+                    document.getElementById("livedemo").style = "color:white;background-color:rgb(50, 50, 50);padding:44px 0 44px 0;";
+                }
+                else
+                {
+                    demoframe.width = 1280;
+                    demoframe.height = 720;
+                }
+                demoframe.src = "viry3d/wasm/index.html";
+            </script>
         </div>
 
         <div id="showcase" style="background-color:rgb(240, 240, 240);padding-top:44px;padding-bottom:44px;">
