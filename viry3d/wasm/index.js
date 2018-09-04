@@ -28,12 +28,14 @@ function OnMouseDown(e) {
     const x = e.clientX - gl.canvas.offsetLeft;
     const y = e.clientY - gl.canvas.offsetTop;
 
-    Engine.events.push({
-        type: "MouseDown",
-        x: x,
-        y: y,
-    });
-    Engine.down = true;
+    if (!Engine.down) {
+        Engine.events.push({
+            type: "MouseDown",
+            x: x,
+            y: y,
+        });
+        Engine.down = true;
+    }
 }
 
 function OnMouseMove(e) {
@@ -53,12 +55,14 @@ function OnMouseUp(e) {
     const x = e.clientX - gl.canvas.offsetLeft;
     const y = e.clientY - gl.canvas.offsetTop;
 
-    Engine.events.push({
-        type: "MouseUp",
-        x: x,
-        y: y,
-    });
-    Engine.down = false;
+    if (Engine.down) {
+        Engine.events.push({
+            type: "MouseUp",
+            x: x,
+            y: y,
+        });
+        Engine.down = false;
+    }
 }
 
 function IsMobilePlatform() {
@@ -100,7 +104,8 @@ function Main() {
     GL.makeContextCurrent(context);
     gl = Module.ctx;
 
-    if (IsMobilePlatform() || document.body.clientWidth < 1280) {
+    const is_mobile = IsMobilePlatform();
+    if (is_mobile || document.body.clientWidth < 1280) {
         canvas.width = document.body.clientWidth;
         canvas.height = canvas.width * 720 / 1280;
     } else {
@@ -108,15 +113,30 @@ function Main() {
         canvas.height = 720;
     }
 
-    canvas.onmousedown = function (e) {
-        OnMouseDown(e);
-    };
-    canvas.onmousemove = function (e) {
-        OnMouseMove(e);
-    };
-    canvas.onmouseup = function (e) {
-        OnMouseUp(e);
-    };
+    if (is_mobile) {
+        canvas.ontouchstart = function (e) {
+            OnMouseDown(e);
+        };
+        canvas.ontouchmove = function (e) {
+            OnMouseMove(e);
+        };
+        canvas.ontouchend = function (e) {
+            OnMouseUp(e);
+        };
+        canvas.ontouchcancel = function (e) {
+            OnMouseUp(e);
+        };
+    } else {
+        canvas.onmousedown = function (e) {
+            OnMouseDown(e);
+        };
+        canvas.onmousemove = function (e) {
+            OnMouseMove(e);
+        };
+        canvas.onmouseup = function (e) {
+            OnMouseUp(e);
+        };
+    }
 
     const canvas_width = canvas.width;
     const canvas_height = canvas.height;
