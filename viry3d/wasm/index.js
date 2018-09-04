@@ -65,8 +65,21 @@ function OnMouseUp(e) {
     }
 }
 
-function IsMobilePlatform() {
-    return /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent);
+const Platform = {
+    Android: 0,
+    iOS: 1,
+    Other: 2,
+};
+
+function GetPlatform() {
+    const agent = navigator.userAgent;
+    if (agent.indexOf("Android") >= 0) {
+        return Platform.Android;
+    } else if (agent.indexOf("iPhone") >= 0 || agent.indexOf("iPad") >= 0 || agent.indexOf("iPod") >= 0) {
+        return Platform.iOS;
+    } else {
+        return Platform.Other;
+    }
 }
 
 function Render() {
@@ -104,18 +117,20 @@ function Main() {
     GL.makeContextCurrent(context);
     gl = Module.ctx;
 
-    const is_mobile = IsMobilePlatform();
+    const platform = GetPlatform();
     const has_touch = !!(('ontouchstart' in window) || (window.DocumentTouch && document instanceof DocumentTouch));
 
     console.log(navigator.userAgent);
-    if (is_mobile) {
-        console.log("Running on mobile platform");
+    if (platform == Platform.Android) {
+        console.log("Running on Android platform");
+    } else if (platform == Platform.iOS) {
+        console.log("Running on iOS platform");
     } else {
         console.log("Running on desktop platform");
     }
     console.log("Has touch " + has_touch);
 
-    if (is_mobile || document.body.clientWidth < 1280) {
+    if (platform == Platform.Android || platform == Platform.iOS || document.body.clientWidth < 1280) {
         canvas.width = document.body.clientWidth;
         canvas.height = canvas.width * 720 / 1280;
     } else {
@@ -124,9 +139,34 @@ function Main() {
     }
 
     if (has_touch) {
-        canvas.addEventListener("touchstart", OnMouseDown, false);
-        canvas.addEventListener("touchmove", OnMouseMove, false);
-        canvas.addEventListener("touchend", OnMouseUp, false);
+        canvas.addEventListener("touchstart", function(e) {
+            e.preventDefault();
+            const touches = e.changedTouches;
+            if (touches.length > 0) {
+                OnMouseDown(touches[0]);
+            }
+        });
+        canvas.addEventListener("touchmove", function(e) {
+            e.preventDefault();
+            const touches = e.changedTouches;
+            if (touches.length > 0) {
+                OnMouseMove(touches[0]);
+            }
+        });
+        canvas.addEventListener("touchend", function(e) {
+            e.preventDefault();
+            const touches = e.changedTouches;
+            if (touches.length > 0) {
+                OnMouseUp(touches[0]);
+            }
+        });
+        canvas.addEventListener("touchcancel", function(e) {
+            e.preventDefault();
+            const touches = e.changedTouches;
+            if (touches.length > 0) {
+                OnMouseUp(touches[0]);
+            }
+        });
     } else {
         canvas.addEventListener("mousedown", OnMouseDown, false);
         canvas.addEventListener("mousemove", OnMouseMove, false);
