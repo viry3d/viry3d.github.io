@@ -20,13 +20,15 @@
                 <div style="float:left;width:512px;height:250px;margin-left:44px;margin-bottom:44px;margin-right:44px;">
                     <h1 style="font-weight:400;margin:0;">Viry3D</h1>
                     <p style="font-size:large;">
-                        C++跨平台3D游戏引擎。<br />
-                        支持Windows、Android、iOS、macOS和Web。<br />
+                        C++ 跨平台 3D 游戏引擎。<br />
+                        支持 Android、iOS、macOS、Windows、<br />
+                        UWP（Windows 通用平台）、<br />
+                        Web（基于 WebAssembly）。<br />
                     </p>
                     <p style="float:right;text-align:right;">
                         Stack<br />
                         邮箱：stackos@qq.com<br />
-                        QQ交流群：428374717<br />
+                        QQ 交流群：428374717<br />
                     </p>
                 </div>
             </div>
@@ -45,28 +47,28 @@
                 </ul>
                 <p><strong>平台 &amp; 3D API支持</strong></p>
                 <ul>
-                    <li>Vulkan, OpenGL ES 2.0/3.0</li>
-                    <li>Windows, Android, iOS, macOS, Web(基于WebAssembly)</li>
+                    <li>Vulkan、OpenGL ES 2.0/3.0</li>
+                    <li>Android、iOS、macOS、Windows、UWP（Windows 通用平台）、Web（基于 WebAssembly）</li>
                 </ul>
                 <p><strong>Mesh</strong></p>
                 <ul>
-                    <li>使用Unity3D导出场景和网格数据</li>
+                    <li>使用 Unity3D 导出场景和网格数据</li>
                     <li>包含材质和纹理导出</li>
                 </ul>
                 <p><strong>动画</strong></p>
                 <ul>
-                    <li>使用Unity3D导出动画数据</li>
+                    <li>使用 Unity3D 导出动画数据</li>
                     <li>
                         支持骨骼动画
                         <ul>
                             <li>不同动作间的权重混合</li>
-                            <li>4骨骼权重蒙皮</li>
+                            <li>4 骨骼权重蒙皮</li>
                             <li>蒙皮硬件加速</li>
                         </ul>
                     </li>
-                    <li>基于贝塞尔曲线的的AnimationCurve</li>
+                    <li>基于贝塞尔曲线的的 AnimationCurve</li>
                 </ul>
-                <p><strong>效果</strong></p>
+                <p><strong>渲染</strong></p>
                 <ul>
                     <li>Camera</li>
                     <li>Mesh Renderer</li>
@@ -90,10 +92,15 @@
                 <ul>
                     <li>鼠标、键盘、触摸事件处理</li>
                 </ul>
+                <p><strong>音频</strong></p>
+                <ul>
+                    <li>基于 OpenAL 的跨平台 3D 音频播放</li>
+                    <li>支持 wav、流式 mp3 格式</li>
+                </ul>
                 <p><strong>其它</strong></p>
                 <ul>
-                    <li>文件IO</li>
-                    <li>UTF8、UTF32字符串编码</li>
+                    <li>文件 IO</li>
+                    <li>UTF8、UTF32 字符串编码</li>
                     <li>数学库</li>
                 </ul>
 
@@ -103,7 +110,7 @@
         </div>
 
         <div id="livedemo" style="color:white;background-color:rgb(50, 50, 50);padding:44px;">
-            <h1 style="font-weight:400;margin-top:0;text-align:center;">在线Demo</h1>
+            <h1 style="font-weight:400;margin-top:0;text-align:center;">在线 Demo</h1>
 
             <table align="center" style="border-spacing:0;">
                 <tr>
@@ -144,8 +151,8 @@
 
                     <div style="float:left;width:444px;height:50px;margin-left:44px;margin-top:65px;">
                         <p style="margin:0;">
-                            使用旧版引擎（支持UWP）模仿制作。<br />
-                            可以在Windows应用商店<a href="https://www.microsoft.com/store/apps/9NBLGGH4PRR2" target="_blank">查看详情</a>。<br />
+                            使用旧版引擎模仿制作。<br />
+                            可以在 Windows 应用商店 <a href="https://www.microsoft.com/store/apps/9NBLGGH4PRR2" target="_blank">查看详情</a>。<br />
                         </p>
                     </div>
                 </div>
@@ -165,8 +172,8 @@
 
                     <div style="float:left;width:444px;height:50px;margin-left:44px;margin-top:65px;">
                         <p style="margin:0;">
-                            模仿像素鸟，使用旧版WebGL引擎制作。<br />
-                            <a href="http://www.viry3d.com/viry3d/web/index.html?AppJavaScript" target="_blank">WebGL版在线玩</a>。<br />
+                            模仿像素鸟，使用旧版 TypeScript WebGL 引擎制作。<br />
+                            <a href="http://www.viry3d.com/viry3d/web/index.html?AppJavaScript" target="_blank">在线试玩</a>。<br />
                         </p>
                     </div>
                 </div>
@@ -179,7 +186,7 @@
 
         <div id="footer" style="padding:20px;background-color:rgb(50, 50, 50);color:white;text-align:center;font-size:small;clear:both;">
             <p style="margin:0;">ViryTech.</p>
-            <p style="margin:0;">由Stack保留所有权利</p>
+            <p style="margin:0;">由 Stack 保留所有权利</p>
         </div>
 
     </div>
